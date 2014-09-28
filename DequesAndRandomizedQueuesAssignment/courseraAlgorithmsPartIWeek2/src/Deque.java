@@ -9,6 +9,10 @@ import java.util.Iterator;
  */
 public class Deque<Item> implements Iterable<Item> {
 
+    private int size; // number of elements in the queue
+    private Node first;
+    private Node last;
+
     private class DequeIterator implements Iterator<Item> {
 
         private Node current = first;
@@ -37,19 +41,15 @@ public class Deque<Item> implements Iterable<Item> {
 
     private class Node {
 
+        private Item item;
+        private Node previous;
+        private Node next;
+
         public Node(Item item) {
             super();
             this.item = item;
         }
-
-        private Item item;
-        private Node previous;
-        private Node next;
     }
-
-    private int size; // number of elements in the queue
-    private Node first;
-    private Node last;
 
     /**
      * construct an empty deque.

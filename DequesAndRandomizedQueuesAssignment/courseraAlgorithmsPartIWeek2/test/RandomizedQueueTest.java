@@ -2,6 +2,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import org.junit.Before;
@@ -11,6 +12,8 @@ import org.junit.Test;
  * @author luisgc
  */
 public class RandomizedQueueTest {
+
+    private static final int MASSIVE_AMOUNT = 50;
 
     private static final Integer ITEM_ONE = Integer.valueOf(1);
 
@@ -93,6 +96,46 @@ public class RandomizedQueueTest {
 
         randomizedQueue.sample();
         assertFalse(randomizedQueue.isEmpty());
+    }
+
+    /**
+     * Test method for {@link RandomizedQueue#size()}.
+     */
+    @Test
+    public final void testMassiveEnqueue() {
+        assertEquals(0, randomizedQueue.size());
+
+        for (int i = 1; i <= MASSIVE_AMOUNT; i++) {
+            randomizedQueue.enqueue(Integer.valueOf(i));
+            System.out.println(randomizedQueue.size());
+        }
+        assertEquals(MASSIVE_AMOUNT, randomizedQueue.size());
+
+        for (int i = 1; i <= MASSIVE_AMOUNT; i++) {
+            randomizedQueue.dequeue();
+            System.out.println(randomizedQueue.size());
+        }
+        assertEquals(0, randomizedQueue.size());
+
+    }
+
+    /**
+     * Test method for {@link RandomizedQueue#size()}.
+     */
+    @Test
+    public final void testValidIteratorAfterMassiveEnqueue() {
+        assertEquals(0, randomizedQueue.size());
+
+        for (int i = 1; i <= MASSIVE_AMOUNT; i++) {
+            randomizedQueue.enqueue(Integer.valueOf(i));
+        }
+
+        Iterator<Integer> iterator = randomizedQueue.iterator();
+
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
     }
 
 }

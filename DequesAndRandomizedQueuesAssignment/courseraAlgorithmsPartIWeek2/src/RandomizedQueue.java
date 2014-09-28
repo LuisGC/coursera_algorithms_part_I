@@ -12,13 +12,14 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     private Item[] array;
     private int size;
 
-    public class RandomizedQueueIterator implements Iterator<Item> {
+    private class RandomizedQueueIterator implements Iterator<Item> {
 
         private Item[] iteratorArray;
+        private int iteratorArraySize;
 
-        @SuppressWarnings("unchecked")
         public RandomizedQueueIterator() {
-            iteratorArray = (Item[]) new Object[1];
+            iteratorArray = (Item[]) new Object[size];
+            iteratorArraySize = size;
             for (int i = 0; i < size; i++) {
                 iteratorArray[i] = array[i];
             }
@@ -27,16 +28,16 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
         @Override
         public boolean hasNext() {
-            return iteratorArray.length > 0;
+            return iteratorArraySize > 0;
         }
 
         @Override
         public Item next() {
-            if (iteratorArray.length == 0) {
+            if (iteratorArraySize == 0) {
                 throw new NoSuchElementException();
             }
-            Item nextItem = iteratorArray[iteratorArray.length - 1];
-            iteratorArray[iteratorArray.length - 1] = null;
+            Item nextItem = iteratorArray[iteratorArraySize - 1];
+            iteratorArray[--iteratorArraySize] = null;
 
             return nextItem;
         }
@@ -51,7 +52,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     /**
      * construct an empty randomized queue.
      */
-    @SuppressWarnings("unchecked")
     public RandomizedQueue() {
         size = 0;
         array = (Item[]) new Object[1];
@@ -93,7 +93,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     private void resize(final int capacity) {
-        @SuppressWarnings("unchecked")
         final Item[] resizedArray = (Item[]) new Object[capacity];
 
         for (int i = 0; i < size; i++) {
@@ -120,7 +119,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             final int randomIndex = StdRandom.uniform(size - 1);
             removedItem = array[randomIndex];
             array[randomIndex] = array[--size];
-            if (array.length / size <= 4) {
+            if (array.length / size >= 4) {
                 resize(array.length / 2);
             }
         }
