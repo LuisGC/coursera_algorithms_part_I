@@ -27,9 +27,7 @@ public class Deque<Item> implements Iterable<Item> {
         @Override
         public void remove() {
             throw new java.lang.UnsupportedOperationException();
-
         }
-
     }
 
     private class Node {
@@ -185,7 +183,6 @@ public class Deque<Item> implements Iterable<Item> {
      * @param args
      */
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         Deque<Integer> deque = new Deque<Integer>();
         deque.addFirst(5);
         System.out.println(!deque.isEmpty() && deque.size() == 1);

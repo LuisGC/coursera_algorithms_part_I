@@ -81,6 +81,16 @@ public class DequeTest {
     }
 
     /**
+     * Test method for {@link Deque#addFirst(java.lang.Object)}.
+     */
+    @Test(expected = NullPointerException.class)
+    public final void testAddFirstNullItem() {
+        assertEquals(0, deque.size());
+
+        deque.addFirst(null);
+    }
+
+    /**
      * Test method for {@link Deque#addLast(java.lang.Object)}.
      */
     @Test
@@ -94,7 +104,16 @@ public class DequeTest {
         deque.addLast(ITEM_TWO);
         assertEquals(1, deque.size());
         assertEquals(ITEM_TWO, deque.removeLast());
+    }
 
+    /**
+     * Test method for {@link Deque#addFirst(java.lang.Object)}.
+     */
+    @Test(expected = NullPointerException.class)
+    public final void testAddLastNullItem() {
+        assertEquals(0, deque.size());
+
+        deque.addLast(null);
     }
 
     /**
