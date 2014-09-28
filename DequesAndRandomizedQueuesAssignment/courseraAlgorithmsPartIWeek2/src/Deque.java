@@ -1,6 +1,10 @@
 import java.util.Iterator;
 
 /**
+ * A double-ended queue or deque (pronounced "deck") is a generalization of a
+ * stack and a queue that supports inserting and removing items from either the
+ * front or the back of the data structure.
+ * 
  * @author luisgc
  */
 public class Deque<Item> implements Iterable<Item> {
@@ -16,8 +20,9 @@ public class Deque<Item> implements Iterable<Item> {
 
         @Override
         public Item next() {
-            if (current == null)
+            if (current == null) {
                 throw new java.util.NoSuchElementException();
+            }
 
             final Item item = current.item;
             current = current.next;
@@ -80,8 +85,9 @@ public class Deque<Item> implements Iterable<Item> {
      *            item to add
      */
     public void addFirst(final Item item) {
-        if (item == null)
+        if (item == null) {
             throw new NullPointerException("you can't add a null item to Deque");
+        }
 
         final Node newFirst = new Node(item);
 
@@ -106,8 +112,9 @@ public class Deque<Item> implements Iterable<Item> {
      *            item to add
      */
     public void addLast(final Item item) {
-        if (item == null)
+        if (item == null) {
             throw new NullPointerException("you can't add a null item to Deque");
+        }
 
         final Node newLast = new Node(item);
 
@@ -183,25 +190,7 @@ public class Deque<Item> implements Iterable<Item> {
      * @param args
      */
     public static void main(String[] args) {
-        Deque<Integer> deque = new Deque<Integer>();
-        deque.addFirst(5);
-        System.out.println(!deque.isEmpty() && deque.size() == 1);
-
-        deque.addLast(4);
-        deque.addLast(3);
-        System.out.println(!deque.isEmpty() && deque.size() == 3);
-
-        deque.removeFirst();
-        System.out.println(deque.size() == 2);
-
-        deque.removeFirst();
-        System.out.println(deque.size() == 1);
-
-        deque.addFirst(1);
-        deque.addLast(6);
-        for (java.util.Iterator<Integer> it = deque.iterator(); it.hasNext();) {
-            System.out.println(it.next());
-        }
+        // TODO Auto-generated method stub
 
     }
 }
