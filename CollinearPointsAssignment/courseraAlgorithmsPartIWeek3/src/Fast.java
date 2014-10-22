@@ -49,12 +49,12 @@ public class Fast {
         for (int i = 0; i < arraySize; i++) {
             final Point p1 = pointArray[i];
 
-            // searching for the low and high bounds
+            // searching for the lower and higher bounds
             Arrays.sort(pointArray, p1.SLOPE_ORDER);
             int lo = 0;
             int hi = 0;
 
-            for (int j = i + 1; j < arraySize - 1; j++) {
+            for (int j = 1; j < arraySize - 1; j++) {
                 if (lo == 0) {
                     if (p1.slopeTo(pointArray[j]) == p1
                             .slopeTo(pointArray[j + 1])) {
@@ -64,8 +64,8 @@ public class Fast {
                     if (p1.slopeTo(pointArray[j]) != p1
                             .slopeTo(pointArray[j + 1])) {
                         hi = j;
-                    } else if (j == arraySize - 2) {
-                        hi = arraySize - 1;
+                        // } else if (j == arraySize - 2) {
+                        // hi = arraySize - 1;
                     }
                 }
 

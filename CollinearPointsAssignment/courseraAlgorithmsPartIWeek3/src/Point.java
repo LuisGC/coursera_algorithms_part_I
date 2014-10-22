@@ -5,13 +5,13 @@ import java.util.Comparator;
  */
 public class Point implements Comparable<Point> {
 
-    private final int x; // x coordinate
-    private final int y; // y coordinate
-
     /**
      * compare points by slope to this point
      */
     public final Comparator<Point> SLOPE_ORDER = new ComparatorBySlope();
+
+    private final int x; // x coordinate
+    private final int y; // y coordinate
 
     /**
      * Construct the point (x, y).
@@ -95,7 +95,7 @@ public class Point implements Comparable<Point> {
      * 
      * @author luisgc
      */
-    public class ComparatorBySlope implements Comparator<Point> {
+    private class ComparatorBySlope implements Comparator<Point> {
 
         /*
          * (non-Javadoc)
