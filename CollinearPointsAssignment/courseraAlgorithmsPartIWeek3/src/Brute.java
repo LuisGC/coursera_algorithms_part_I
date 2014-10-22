@@ -75,7 +75,7 @@ public class Brute {
         collinearSegment[2] = p3;
         collinearSegment[3] = p4;
 
-        Arrays.sort(collinearSegment, p1.SLOPE_ORDER);
+        Arrays.sort(collinearSegment);
 
         printOutSegment(collinearSegment);
         drawSegment(collinearSegment);
