@@ -1,6 +1,12 @@
 import java.util.Arrays;
 
 /**
+ * This class examines 4 points at a time and checks whether they all lie on the
+ * same line segment, printing out any such line segments to standard output and
+ * drawing them using standard drawing.<br>
+ * <br>
+ * Brute force implementation.
+ * 
  * @author luisgc
  */
 public class Brute {
@@ -105,6 +111,9 @@ public class Brute {
     }
 
     /**
+     * Read the points from an input file in the following format: An integer N,
+     * followed by N pairs of integers (x, y), each between 0 and 32,767.
+     * 
      * @param args
      */
     public static void main(String[] args) {
