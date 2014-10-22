@@ -5,7 +5,7 @@ import java.util.Arrays;
  */
 public class Brute {
 
-    Point[] pointArray;
+    private Point[] pointArray;
 
     /**
      * 
@@ -29,23 +29,29 @@ public class Brute {
         }
 
         drawEntireArray();
+
         Arrays.sort(pointArray);
 
-        for (int i = 0; i < arraySize - 3; i++) {
+        for (int i = 0; i < arraySize; i++) {
             final Point p1 = pointArray[i];
-            // Arrays.sort(pointArray, p1.SLOPE_ORDER);
 
-            for (int j = i + 1; j < arraySize - 2; j++) {
+            for (int j = i + 1; j < arraySize; j++) {
                 final Point p2 = pointArray[j];
 
-                for (int k = j + 1; k < arraySize - 1; k++) {
+                for (int k = j + 1; k < arraySize; k++) {
                     final Point p3 = pointArray[k];
 
-                    for (int l = k + 1; l < arraySize; l++) {
-                        final Point p4 = pointArray[k];
+                    if (p1.slopeTo(p2) == p1.slopeTo(p3)) {
+                        // At least p1, p2 and p3 are collinear
 
-                        checkCollinearPoints(p1, p2, p3, p4);
+                        for (int l = k + 1; l < arraySize; l++) {
+                            final Point p4 = pointArray[l];
 
+                            if (p1.slopeTo(p2) == p1.slopeTo(p4)) {
+                                drawCollinearPoints(p1, p2, p3, p4);
+                            }
+
+                        }
                     }
 
                 }
@@ -54,25 +60,19 @@ public class Brute {
         }
     }
 
-    private void checkCollinearPoints(final Point p1, final Point p2,
+    private void drawCollinearPoints(final Point p1, final Point p2,
             final Point p3, final Point p4) {
 
-        if (p1.SLOPE_ORDER.compare(p2, p3) == 0) {
-            if (p1.SLOPE_ORDER.compare(p2, p4) == 0) {
+        final Point[] collinearSegment = new Point[4];
+        collinearSegment[0] = p1;
+        collinearSegment[1] = p2;
+        collinearSegment[2] = p3;
+        collinearSegment[3] = p4;
 
-                final Point[] collinearSegment = new Point[4];
-                collinearSegment[0] = p1;
-                collinearSegment[1] = p2;
-                collinearSegment[2] = p3;
-                collinearSegment[3] = p4;
+        Arrays.sort(collinearSegment, p1.SLOPE_ORDER);
 
-                Arrays.sort(collinearSegment);
-
-                printOutSegment(collinearSegment);
-                drawSegment(collinearSegment);
-            }
-
-        }
+        printOutSegment(collinearSegment);
+        drawSegment(collinearSegment);
 
     }
 

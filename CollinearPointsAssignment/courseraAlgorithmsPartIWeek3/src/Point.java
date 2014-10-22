@@ -104,8 +104,8 @@ public class Point implements Comparable<Point> {
          */
         @Override
         public int compare(Point pointA, Point pointB) {
-            double slopeA = Point.this.slopeTo(pointA);
-            double slopeB = Point.this.slopeTo(pointB);
+            double slopeA = slopeTo(pointA);
+            double slopeB = slopeTo(pointB);
             return Double.compare(slopeA, slopeB);
         }
 
