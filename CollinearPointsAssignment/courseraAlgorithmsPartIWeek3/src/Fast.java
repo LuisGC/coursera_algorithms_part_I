@@ -64,8 +64,8 @@ public class Fast {
                     if (p1.slopeTo(pointArray[j]) != p1
                             .slopeTo(pointArray[j + 1])) {
                         hi = j;
-                        // } else if (j == arraySize - 2) {
-                        // hi = arraySize - 1;
+                    } else if (j == arraySize - 2) {
+                        hi = arraySize - 1;
                     }
                 }
 
